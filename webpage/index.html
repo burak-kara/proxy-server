@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html>
+<meta charset="UTF-8"/>
+
+<style type="text/css">
+    body {
+        background-color: #f0e8c5;
+    }
+
+    img {
+        width: 125px;
+    }
+
+    .logo {
+        text-align: center;
+        display: flex;
+        justify-content: center;
+        background-color: lightyellow;
+        margin-top: 15px;
+        width: 250px;
+        height: 100px;
+    }
+
+    .section-style {
+        margin-right: 25px;
+        margin-left: 25px;
+        background-color: #FA8072;
+        border-radius: 40px;
+    }
+
+    .search {
+        grid-area: center;
+        width: 1000px;
+        height: 100px;
+        background: lightyellow;
+    }
+
+    .button {
+        background-color: #CD5C5C;
+        border: none;
+        color: white;
+        padding: 10px;
+        text-align: right;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 14px;
+        margin: 4px 2px;
+        cursor: pointer;
+        border-radius: 12px;
+    }
+
+    .webpage {
+        font-size: x-large;
+        text-align: center;
+        width: 1000px;
+        height: 510px;
+        background: white;
+    }
+
+    .datasaver {
+        display: inline-block;
+        text-align: center;
+        background: lightyellow;
+        width: 300px;
+        height: 50px;
+    }
+
+    .log {
+        background: aliceblue;
+        width: 300px;
+        height: 440px;
+    }
+
+    .left1 {
+        width: 20%;
+    }
+
+    .left2 {
+        width: 75%;
+    }
+
+    .right1 {
+        width: 60%;
+        text-align: center;
+    }
+
+    .right2 {
+        width: 20%;
+    }
+
+    .column {
+        float: left;
+        padding: 5px;
+    }
+
+    .row:after {
+        display: table;
+        clear: both;
+    }
+
+</style>
+<body>
+<script type="text/javascript">
+    var url = "http://52.87.200.23:8080/?link=";
+    var saver = "y";
+
+    function sayYes() {
+        document.getElementById("yes").checked = true;
+        document.getElementById("log").innerText = "Data Saver on";
+        saver = "y";
+    }
+
+    function sayNo() {
+        document.getElementById("no").checked = true;
+        document.getElementById("log").innerText = "Data Saver off";
+        saver = "n";
+    }
+
+    function start() {
+        var link = url + saver;
+        link += document.getElementById("search").value;
+        document.getElementById("framexx").src = link;
+    }
+
+</script>
+
+<div class="row">
+    <div class="column left1">
+        <div class="logo">
+            <div class="section-style">
+                <img src="images/logo.png"/>
+            </div>
+        </div>
+    </div>
+    <div class="column right1">
+        <div class="search">
+            <p><strong>Enter the URL you would like to visit: </strong></p>
+            <input type="text" id="search" size=50>
+            <button class="button" type="submit" onclick="start()">
+                Search
+            </button>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="column left2">
+        <iframe class="webpage" name=framex" id="framexx"></iframe>
+    </div>
+    <div class="column right2">
+        <div class="row">
+            <div class="datasaver">
+                <form id="radios">
+                    Data Saver
+                    <br>
+                    <input type="radio" name="yesno" id="yes" value="true" onclick="sayYes()" checked>On
+                    <input type="radio" name="yesno" id="no" value="false" onclick="sayNo()">Off
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="log" id="log">
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
